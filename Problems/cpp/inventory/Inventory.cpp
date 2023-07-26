@@ -9,16 +9,19 @@ Inventory::Inventory()
     description_of_product = "battery";
     balance_stock = 100;
     productcode = initProductCode;
-
     initProductCode++;
 }
 
 Inventory::Inventory(std::string dec, int bal_stock)
 {
-    description_of_product = dec;
     balance_stock = bal_stock;
+    if(balance_stock<20)
+    {
+        balance_stock =50;
+        std::cout<<"Auto initialized to 50";
+    }
+    description_of_product = dec;
     productcode = initProductCode;
-
     initProductCode++;
 }
 
@@ -55,9 +58,7 @@ void operator>>(std::istream &in, Inventory &stock)
 {
     std::cout << "Enter product name :";
     in >> stock.description_of_product;
-    do
-    {
-        std::cout << "\nEnter initial product items in warehouse:";
+    std::cout << "\nEnter initial product items in warehouse:";
         in >> stock.balance_stock;
-    } while (stock.balance_stock < 20);
+     
 }

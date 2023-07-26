@@ -79,11 +79,11 @@ void showMenu(Inventory *inventory)
 int main()
 {
 
-    Inventory *inventory = new Inventory[5];
+    Inventory *inventory = new Inventory[5]; 
 
     for (int i = 0; i < 5; i++)
     {
-        std::cin >> inventory[i];
+        std::cin >> inventory[i]; // oprator>>(cin, inventory[i])
     }
 
     showMenu(inventory);
