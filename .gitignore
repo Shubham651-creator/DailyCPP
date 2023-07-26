@@ -1,0 +1,6 @@
+#ignore all a.out files
+*.out
+*.zip
+
+#ignore all file from build dir
+build/
