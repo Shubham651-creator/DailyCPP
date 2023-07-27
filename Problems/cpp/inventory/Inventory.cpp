@@ -15,10 +15,10 @@ Inventory::Inventory()
 Inventory::Inventory(std::string dec, int bal_stock)
 {
     balance_stock = bal_stock;
-    if(balance_stock<20)
+    if (balance_stock < 20)
     {
-        balance_stock =50;
-        std::cout<<"Auto initialized to 50";
+        balance_stock = 50;
+        std::cout << "Auto initialized to 50";
     }
     description_of_product = dec;
     productcode = initProductCode;
@@ -43,8 +43,14 @@ void Inventory::sale()
     int items;
     std::cout << "Enter number of sales items for " << description_of_product << "\n";
     std::cin >> items;
-
-    balance_stock -= items;
+    if (balance_stock - items > 20)
+    {
+        balance_stock -= items;
+    }
+    else
+    {
+        std::cout << "Because of balance stock drop down below 20, reduce sales and re-enter sales items: \n";
+    }
 }
 
 void operator<<(std::ostream &out, Inventory &stock)
@@ -59,6 +65,5 @@ void operator>>(std::istream &in, Inventory &stock)
     std::cout << "Enter product name :";
     in >> stock.description_of_product;
     std::cout << "\nEnter initial product items in warehouse:";
-        in >> stock.balance_stock;
-     
+    in >> stock.balance_stock;
 }
