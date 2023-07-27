@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 // we can not create function inside the stucture in C
+//but the only option is function pointer
 
 struct Employee
 {
