@@ -2,12 +2,12 @@
 
 // function overloading
 
-void swap(int *a, int *b) //integer
+void swap(int& a, int& b) //integer and call by ref
 {
     int t;
-    t = *a;
-    *a = *b;
-    *b = t;
+    t = a;
+    a = b;
+    b = t;
 }
 
 void swap(float *a, float *b) //float
@@ -31,7 +31,7 @@ int main()
     int a = 2, b = 3;
     ap = &a;
     bp = &b;
-    swap(ap, bp);
+    swap(a, b); //direct pass variables
     std::cout << "int ::      a = " << *ap << "\tb= " << *bp << "\n";
 
     float *afp, *bfp;
