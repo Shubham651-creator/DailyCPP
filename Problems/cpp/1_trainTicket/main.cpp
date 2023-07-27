@@ -1,3 +1,4 @@
+//mini-code marathon : Question 1
 #include <iostream> 
 #include "Train.h"
 
