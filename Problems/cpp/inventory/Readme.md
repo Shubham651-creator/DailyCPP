@@ -8,6 +8,7 @@ A. Data Members
     3. productcode of type int.
 
 B. Member functions
+
     1. default constructor - Initial product stock size should be greater than 20, which is the company’s minimum stock level.
 
     2. parameterized constructor- validate the initial product to ensure it has a stock greater than 20, which is the company’s minimum stock level.
