@@ -11,10 +11,10 @@ A data member Fuel of type float
 i) default constructor
 ii) parameterized constructor
 iii)  calculateFuelQuantity() function to calculate the value of Fuel as per the following criteria
-            Distance                                      Fuel
-            <=1000                                        500
-            more than 1000  and <=2000                    1100
-            more than 2000                                2200
+       Distance ---> Fuel
+       <=1000  ---> 500
+       more than 1000 and <=2000 ---> 1100
+       more than 2000  ---> 2200
 
 iv)  feedInfo() function to allow user to enter values for Flight Number, Destination, Distance & call function calculateFuelQuantity () to calculate the quantity of Fuel
 
