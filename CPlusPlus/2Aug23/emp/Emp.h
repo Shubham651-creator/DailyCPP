@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-enum class EmployeeType //defines employee enum
+enum class EmployeeType // defines employee enum
 {
     PERMANANT,
     TEMP,
@@ -12,10 +12,13 @@ enum class EmployeeType //defines employee enum
 
 class Emp
 {
+
+protected:
+    double basicSalary;
+
 private:
     int empid;
     std::string ename;
-    double basicSalary;
     double houseRentAllowence, medicalAllowance, professionalTax, providentFund;
     enum EmployeeType enumType;
 
@@ -24,6 +27,7 @@ private:
 public:
     Emp(int, std::string, double, EmployeeType);
     Emp();
+    ~Emp();
 
     void accept();
     void display();

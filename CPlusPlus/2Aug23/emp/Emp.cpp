@@ -3,6 +3,7 @@
 
 void Emp::calculateAllowance()
 {
+    std::cout<<"\n++++++++++default constructor employee called++++\n";
     houseRentAllowence = basicSalary * 0.05;
     medicalAllowance = basicSalary * 0.05;
     professionalTax = 2500;
@@ -22,6 +23,11 @@ Emp::Emp()
     basicSalary = 25000;
     calculateAllowance();
     enumType = EmployeeType::INTERN;
+}
+
+Emp::~Emp()
+{
+    std::cout<<"\n--------Employee base class destructor called-----\n";
 }
 
 void Emp::accept()
