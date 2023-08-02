@@ -4,8 +4,10 @@
 enum class carCategory
 {
     SUV,
+    Sedan,
+    Sport,
     HatchBack,
-    Sedan
+    
 };
 
 #endif // CARCATEGORY_H
