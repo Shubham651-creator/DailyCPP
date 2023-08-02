@@ -5,19 +5,27 @@
 int main()
 {
 
-    // Emp* eptr = new SalesPerson;
-    // eptr->display();
+    /*
 
-    // Emp* eptr2 = new Manager;
-    // eptr2->display();
+        introduction of 'virtual' keyword to base class
+        - The class which have Virtual function called POLYMORPHIC CLASS
+        - It involves runtime polymorphism
 
-    Manager m1(2023, "sanket", 340000, EmployeeType::INTERN, 3, 2000);
-    m1.display();
-    m1.calculateTotalSalary();
+    */
+    Emp* eptr = new SalesPerson;
+    eptr->display();
+    delete eptr;
 
-    SalesPerson sp2(2023, "priya", 340000, EmployeeType::INTERN, 30000, 0.03);
-    sp2.display();
-    sp2.calculateTotalSalary();
+    Emp* eptr2 = new Manager;
+    eptr2->display();
+
+    // Manager m1(2023, "sanket", 340000, EmployeeType::INTERN, 3, 2000);
+    // m1.display();
+    // m1.calculateTotalSalary();
+
+    // SalesPerson sp2(2023, "priya", 340000, EmployeeType::INTERN, 30000, 0.03);
+    // sp2.display();
+    // sp2.calculateTotalSalary();
     
 
     // SalesPerson* sp1 = new SalesPerson;

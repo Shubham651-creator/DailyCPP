@@ -27,11 +27,11 @@ private:
 public:
     Emp(int, std::string, double, EmployeeType);
     Emp();
-    ~Emp();
+    virtual ~Emp();
 
-    void accept();
-    void display();
-    double calculateTotalSalary();
+    virtual void accept();
+    virtual void display();
+    virtual double calculateTotalSalary();
 };
 
 #endif // EMP_H
