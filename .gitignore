@@ -1,6 +1,7 @@
 #ignore all a.out files
 *.out
 *.zip
+*.vscode
 
 #ignore all file from build dir
 build/
