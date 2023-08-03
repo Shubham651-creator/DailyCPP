@@ -41,3 +41,9 @@ double SalesPerson::calculateTotalSalary()
 {
     return Emp::calculateTotalSalary() + salesAmount * commisionRate;
 }
+
+//to calculate salepeson commision
+void SalesPerson::calculateCommision() //child special function
+{
+    std::cout << "\nThe salaperson commission amount = " << salesAmount * commisionRate << "\n";
+}
