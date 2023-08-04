@@ -4,16 +4,26 @@
 int main()
 {
 
-    int size = 3;
-    MyQueue queue;
+    int size = 5;
+    MyQueue queue(size);
 
-    queue.enqueue(10);
-    queue.enqueue(20);
-    queue.enqueue(30);
-
-    for (int i = 0; i < size; i++)
+    try
     {
-        std::cout << "element = " << queue.dequeue() << "\n";
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+        queue.enqueue(50);
+
+        for (int i = 0; i < size; i++)
+        {
+            std::cout << "element = " << queue.dequeue() << "\n";
+        }
     }
+    catch (const char *msg)
+    {
+        std::cerr <<"Error throw - " <<msg << "\n";
+    }
+
     return 0;
 }

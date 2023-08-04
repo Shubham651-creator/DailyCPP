@@ -8,28 +8,64 @@ private:
     int front, rear, queueSize;
 
 public:
-    MyQueue(int size)
-    {
-        queueSize = size;
-        front = rear = -1;
-    }
     MyQueue()
     {
         queueSize = 3;
-        front = rear = -1;
+        front = -1;
+        rear = -1;
+        queue = new int[queueSize];
     }
+    MyQueue(int size)
+    {
+        queueSize = size;
+        front = -1;
+        rear = -1;
+        queue = new int[queueSize];
+    }
+
     ~MyQueue();
+
+    bool isEmpty()
+    {
+        if (rear+1 == front)
+            return true;
+        else
+            return false;
+    }
+
+    bool isFull()
+    {
+        if (rear == queueSize-1)
+            return true;
+        else
+            return false;
+    }
 
     void enqueue(int element)
     {
-        queue[++rear] = element;
-        if (front == -1)
-            front++;
+        if (!isFull())
+        {
+            queue[++rear] = element;
+            if (front == -1)
+                front = 0;
+        }
+        else
+        {
+            throw "Queue is Full\n";
+        }
     }
 
     int dequeue()
     {
-        return queue[front++];
+        if (!isEmpty())
+        {
+            return queue[front++];
+
+        }
+        else
+        {
+            throw "Queue is empty\n";
+        }
     }
 };
 
