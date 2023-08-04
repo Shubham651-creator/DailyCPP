@@ -5,10 +5,11 @@
 #include "OverflowException.h"
 #include "UnderflowException.h"
 
+template<class dataType>
 class MyQueue
 {
 private:
-    int *queue;
+    dataType *queue;
     int front, rear, queueSize;
 
 public:
@@ -17,14 +18,14 @@ public:
         queueSize = 3;
         front = -1;
         rear = -1;
-        queue = new int[queueSize];
+        queue = new dataType[queueSize];
     }
     MyQueue(int size)
     {
         queueSize = size;
         front = -1;
         rear = -1;
-        queue = new int[queueSize];
+        queue = new dataType[queueSize];
     }
 
     ~MyQueue();
@@ -45,7 +46,7 @@ public:
             return false;
     }
 
-    void enqueue(int element)
+    void enqueue(dataType element)
     {
         if (!isFull())
         {
@@ -59,7 +60,7 @@ public:
         }
     }
 
-    int dequeue()
+    dataType dequeue()
     {
         if (!isEmpty())
         {
@@ -72,4 +73,12 @@ public:
     }
 };
 
+template<class dataType>
+MyQueue<dataType>::~MyQueue()
+{
+    delete[] queue;
+    std::cout<<"called() destructor\n";
+}
+
+ 
 #endif // MYQUEUE_H

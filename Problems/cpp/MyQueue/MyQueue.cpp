@@ -1,22 +1,10 @@
 #include <iostream>
 #include "MyQueue.h"
 
-MyQueue::~MyQueue()
-{
-    delete[] queue;
-    std::cout<<"destructor\n";
-}
-
-// void MyQueue::enqueue(int element)
+// //template is not working in .cpp file , you must have to do it .h file
+// template<class dataType>
+// MyQueue<dataType>::~MyQueue()
 // {
-//     if (!isFull())
-//     {
-//         queue[++rear] = element;
-//         if (front == -1)
-//             front = 0;
-//     }
-//     else
-//     {
-//         throw OverflowException("Queue is Full\n");
-//     }
+//     delete[] queue;
+//     std::cout<<"destructor\n";
 // }
