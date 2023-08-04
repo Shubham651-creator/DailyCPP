@@ -1,6 +1,10 @@
 #ifndef MYQUEUE_H
 #define MYQUEUE_H
 
+#include <iostream>
+#include "OverflowException.h"
+#include "UnderflowException.h"
+
 class MyQueue
 {
 private:
@@ -27,7 +31,7 @@ public:
 
     bool isEmpty()
     {
-        if (rear+1 == front)
+        if (rear + 1 == front)
             return true;
         else
             return false;
@@ -35,7 +39,7 @@ public:
 
     bool isFull()
     {
-        if (rear == queueSize-1)
+        if (rear == queueSize - 1)
             return true;
         else
             return false;
@@ -51,7 +55,7 @@ public:
         }
         else
         {
-            throw "Queue is Full\n";
+            throw OverflowException("Queue is Full\n");
         }
     }
 
@@ -60,11 +64,10 @@ public:
         if (!isEmpty())
         {
             return queue[front++];
-
         }
         else
         {
-            throw "Queue is empty\n";
+            throw UnderflowException("Queue is empty\n");
         }
     }
 };

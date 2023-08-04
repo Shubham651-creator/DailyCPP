@@ -20,6 +20,9 @@ int main()
             std::cout << "element = " << queue.dequeue() << "\n";
         }
     }
+    catch(OverflowException overObj){
+        std::cout<<overObj.getMessage()<<"\n";
+    }
     catch (const char *msg)
     {
         std::cerr <<"Error throw - " <<msg << "\n";
