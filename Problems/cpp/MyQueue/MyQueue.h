@@ -4,8 +4,9 @@
 #include <iostream>
 #include "OverflowException.h"
 #include "UnderflowException.h"
+#include "One.h"
 
-template<class dataType>
+template <class dataType>
 class MyQueue
 {
 private:
@@ -73,12 +74,11 @@ public:
     }
 };
 
-template<class dataType>
+template <class dataType>
 MyQueue<dataType>::~MyQueue()
 {
     delete[] queue;
-    std::cout<<"called() destructor\n";
+    std::cout << "called() destructor\n";
 }
 
- 
 #endif // MYQUEUE_H

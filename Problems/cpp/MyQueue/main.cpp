@@ -1,12 +1,15 @@
 #include <iostream>
 #include "MyQueue.h"
+#include "One.h"
 
 int main()
 {
 
     int size = 2;
-    //MyQueue<char> queue(size);
-    MyQueue<std::string> queue(size);
+    // MyQueue<char> queue(size);
+    MyQueue<One> queue(size);
+
+    One one1(20, "A"), one2(30, "B");
 
     try
     {
@@ -16,13 +19,23 @@ int main()
         // queue.enqueue('d');
         // queue.enqueue('e');
 
-        queue.enqueue("shuba");
-        queue.enqueue("Awale");
+        queue.enqueue(one1);
+        queue.enqueue(one2);
 
         for (int i = 0; i < size; i++)
         {
-            std::cout << "element = " << queue.dequeue() << "\n";
+            queue.dequeue();
+            // std::cout << "element = " << queue.dequeue() << "\n";
         }
+
+        std::cout << one1;
+        std::cout << one2;
+
+        // one1.display();
+        // one2.display();
+
+        // queue.dequeue();
+        // queue.dequeue();
     }
     catch (OverflowException overObj)
     {
