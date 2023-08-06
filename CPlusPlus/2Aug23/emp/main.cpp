@@ -28,6 +28,7 @@ void showMeun(Emp *ep)
 int main()
 {
 
+    ////by heap allocation
     // showMeun(new Emp);
     // showMeun(new SalesPerson);
     // showMeun(new Manager);
