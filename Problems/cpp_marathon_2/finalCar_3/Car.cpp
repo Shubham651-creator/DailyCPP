@@ -6,14 +6,13 @@ Car::Car()
     carId = "H@123";
     carBrand = "Honda";
     carType = CarType::SEDAN;
-    carEngine = Engine("egine123", EngineType::ICT, 200, 43);
+    carEngine = new Engine("egine123", EngineType::ICT, 200, 43);
     carPrice = 50000;
 }
 
-Car::Car(std::string id, std::string brand, enum CarType type, Engine engine, float price)
+Car::Car(std::string id, std::string brand, enum CarType type, Engine *engine, float price)
     : carId(id), carBrand(brand), carType(type), carEngine(engine), carPrice(price)
 {
-    // carEngine = new Engine;
 }
 
 Car::Car(Car &car)
@@ -76,8 +75,7 @@ void Car::accept()
     int check;
     carType = acceptCarType(check);
 
-    std::cout<<"\nEnter Engine details :";
- 
+    std::cout << "\nEnter Engine details :";
 
     std::cout << "\nEnter car price = ";
     std::cin >> carPrice;
@@ -107,8 +105,9 @@ void operator<<(std::ostream &out, Car &car)
         << "\nCar Brand = " << car.carBrand
         << "\nCar type =" << car.displayCarType(car.carType)
         << "\ncar Price = " << car.carPrice
-        << "\nCar Engine = \n"
-        << car.carEngine;
+        << "\nCar Engine = \n";
+
+    std::cout<<car.carEngine;
 
     out << "\n\n";
 }

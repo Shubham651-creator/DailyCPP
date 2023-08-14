@@ -13,7 +13,7 @@ private:
     enum CarType carType;
 
     // it's pointer to an Engine type instance
-    Engine carEngine;
+    Engine *carEngine;
     float carPrice;
 
 public:
@@ -21,7 +21,7 @@ public:
     Car();
 
     // parameterized constrctor
-    Car(std::string id, std::string brand, enum CarType type, Engine etype , float price);
+    Car(std::string id, std::string brand, enum CarType type, Engine *etype , float price);
 
     // copy construtor
     Car(Car &car);
@@ -54,6 +54,9 @@ public:
 
     float getCarPrice() const { return carPrice; }
     void setCarPrice(float carPrice_) { carPrice = carPrice_; }
+
+    Engine *getCarEngine() const { return carEngine; }
+    void setCarEngine(Engine *carEngine_) { carEngine = carEngine_; }
 
     // operator<< overloading
     friend void operator<<(std::ostream &out, Car &car);

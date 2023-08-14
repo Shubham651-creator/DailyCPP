@@ -39,7 +39,7 @@ std::string Engine::displayEngineType(EngineType type)
 void operator<<(std::ostream &out, Engine &engine)
 {
     out << "The engine Details are given below \n"
-        << "Engine Number = " <<"Engine@2"             
+        << "Engine Number = " << engine.engineNumber
         << "\nEngine Type = " << engine.displayEngineType(engine.engineType)
         << "\nEngine Horsepower = " << engine.engineHorsepower
         << "\nEngine Torque = " << engine.engineTorque
