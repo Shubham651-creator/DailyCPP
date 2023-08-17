@@ -61,3 +61,8 @@
     - processing data from start to end without skipping nothing.
     - it use to processing data completely.
 
+------------------------------------------------------------
+
+[Rule1]
+If you want to make an array of stack allocated object
+so, default constructor must to ENABLE.
