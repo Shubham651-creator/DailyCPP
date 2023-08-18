@@ -46,6 +46,9 @@
     -#define NULL 0 means NULL -> 0. It reached to zeroth address in memory which
         can not accessible and throw segmentation fault.
 
+6. 'noexcept' :
+    - it tell compiler, never throw exception
+
 ---------------------------------------------------------------------
 
 # In modern Cpp programing styles are :
@@ -63,6 +66,23 @@
 
 ------------------------------------------------------------
 
-[Rule1]
+# Rules
+
+[Rule1][default constructor]
 If you want to make an array of stack allocated object
 so, default constructor must to ENABLE.
+
+-----------------------------------------------------------
+
+[Rule2][Branchless progamming]
+- You should avoid or minimizing branching 
+    i.e if-else, switch, expections,etc. for optimization.
+
+--------------------------------------------------------------
+
+[Rule3][const keyword]
+- if function marked as 'const' i.e function does not modify the object
+    which invoked(called) the function.
+- e.g. DataType functionName() const 
+
+--------------------------------------------------------------
