@@ -233,7 +233,7 @@ bool IsAccountValid(std::shared_ptr<Account>& account)
     */
     for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
     {
-        flag = transaction->getTransactionAmount() > 500;
+        flag = transaction->getTransactionAmount() > 100;
 
         if(!flag) return false;
     }

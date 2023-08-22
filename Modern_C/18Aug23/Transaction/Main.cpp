@@ -51,9 +51,11 @@ int main()
               << BalanceInterestAmount(account)
               << "\n";
 
-    // std::cout << "IsAccountValid():"
-    //           << IsAccountValid(account.front())
-    //           << "\n";
+    for(std::shared_ptr<Account>& object : account){
+        std::cout << "IsAccountValid():"
+              << IsAccountValid(object)
+              << "\n";
+    }
 
     // DeleteAccounts(account);
 

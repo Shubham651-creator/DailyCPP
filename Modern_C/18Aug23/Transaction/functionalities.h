@@ -46,6 +46,6 @@ float AverageTransactionAmount(Container &data, std::string accountId);
 float BalanceInterestAmount(Container &data);
 
 // function to check if account is valid or not
-bool IsAccountValid(Account *);
+bool IsAccountValid(std::shared_ptr<Account>&);
 
 #endif // FUNCTIONALITIES_H
