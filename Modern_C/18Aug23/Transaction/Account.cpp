@@ -8,7 +8,7 @@ std::ostream &operator<<(std::ostream &os, const Account &rhs) {
     os << "accountId: " << rhs.accountId
        << "\naccountTransactionSet: " ;
        
-    for(Transaction* transaction : rhs.getAccountTransactionSet()){
+    for(std::shared_ptr<Transaction>& transaction : rhs.getAccountTransactionSet()){
         os << *transaction<<"";
     }
     

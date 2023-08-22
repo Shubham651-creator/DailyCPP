@@ -2,6 +2,7 @@
 #include "Transaction.h"
 #include "Account.h"
 
+
 /*
 createAccount()
 
@@ -24,31 +25,39 @@ createAccount()
     adress4
 */
 
+#include<memory> 
+using Container = std::list<std::shared_ptr<Account>>;
+
 // vector takes collection of Transaction address as element
-using Transactions = std::vector<Transaction *>;
+using Transactions = std::vector<std::shared_ptr<Transaction>>;
 
 void CreateAccounts(Container &data)
 {
-
-    Account *ac1 = new Account(
+    std::shared_ptr<Account> ac1 = std::make_shared<Account>(
         "ac101",
         Transactions{
-            new Transaction("tr101", 100.0f, TransactionType::CASH),
-            new Transaction("tr102", 100.0f, TransactionType::UPI),
-            new Transaction("tr103", 780.0f, TransactionType::CARD)},
+            std::make_shared<Transaction>("tr101", 100.0f, TransactionType::CASH),
+            std::make_shared<Transaction>("tr102", 100.0f, TransactionType::UPI),
+            std::make_shared<Transaction>("tr103", 780.0f, TransactionType::CARD)
+        } ,         
         10000.0f);
 
-    Account *ac2 = new Account(
+
+ 
+
+    std::shared_ptr<Account> ac2 = std::make_shared<Account>(
         "ac102",
         Transactions{
-            new Transaction("tr104", 200.0f, TransactionType::UPI),
-            new Transaction("tr105", 300.0f, TransactionType::UPI),
-            new Transaction("tr106", 640.0f, TransactionType::CARD)},
+            std::make_shared<Transaction>("tr104", 200.0f, TransactionType::UPI),
+            std::make_shared<Transaction>("tr105", 300.0f, TransactionType::UPI),
+            std::make_shared<Transaction>("tr106", 640.0f, TransactionType::CARD),
+        },
         40000.0f);
 
-    //entered account in container
-    data.push_back(ac1);
-    data.push_back(ac2);
+  //  entered account in container
+    data.push_back((ac1));
+    data.push_back((ac2));
+
 }
 
 /*
@@ -57,24 +66,25 @@ void CreateAccounts(Container &data)
             a) delete transaction
         ii)  delete the entire account object now
 */
-void DeleteAccounts(Container &data)
-{
-    for (Account *account : data)
-    {
-        for (Transaction *transaction : account->getAccountTransactionSet())
-        {
-            delete transaction;
-        }
-        delete account;
-    }
-}
 
-int CountTransactionOfGivenType(TransactionContainer &data, TransactionType type)
+// void DeleteAccounts(Container &data)
+// {
+//     for (std::shared_ptr<Account>& account : data)
+//     {
+//         for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
+//         {
+//             delete transaction;
+//         }
+//         delete account;
+//     }
+// }
+
+int CountTransactionOfGivenType(Transactions &data, TransactionType type)
 {
     int count = 0;
-    for (Transaction *container : data)
+    for (std::shared_ptr<Transaction>& object : data)
     {
-        if (container->getTransactionType() == type)
+        if (object->getTransactionType() == type)
         {
             count++;
         }
@@ -91,9 +101,9 @@ float TotalTransactionAmount(Container &data)
     }
 
     float total = 0.0f;
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
-        for (Transaction *transaction : account->getAccountTransactionSet())
+        for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
         {
             total += transaction->getTransactionAmount();
         }
@@ -111,16 +121,16 @@ Container AccountAboveThreshold(Container &data, float threshold)
 
     float total = 0.0f;
     Container store;
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
         total = 0.0f;
-        for (Transaction *transaction : account->getAccountTransactionSet())
+        for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
         {
             total += transaction->getTransactionAmount();
         }
         if (total > threshold)
         {
-            store.emplace_back(account);
+            store.emplace_back((account));
         }
     }
     return store;
@@ -138,7 +148,7 @@ std::string NthTransactionId(Container &data, int N, std::string accountId)
         throw std::runtime_error("Invalid N\n");
     }
 
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
         if (account->getAccountId() == accountId)
         {
@@ -158,7 +168,7 @@ std::string FindMaxAccountBalanceId(Container &data)
     float highBalance = 0.0f;
     std::string id = " ";
 
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
         if (account->getAccountBalance() > highBalance)
         {
@@ -178,11 +188,11 @@ float AverageTransactionAmount(Container &data, std::string accountId)
     }
     float totalTransaction = 0.0f;
     int count = 0;
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
         if (account->getAccountId() == accountId)
         {
-            for (Transaction *transaction : account->getAccountTransactionSet())
+            for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
             {
                 totalTransaction += transaction->getTransactionAmount();
                 count++;
@@ -202,7 +212,7 @@ float BalanceInterestAmount(Container &data)
     }
 
     float balance = 0.0f;
-    for (Account *account : data)
+    for (std::shared_ptr<Account>& account : data)
     {
         if (account->getAccountBalance() > 1000)
         {
@@ -214,14 +224,14 @@ float BalanceInterestAmount(Container &data)
     return balance;
 }
 
-bool IsAccountValid(Account *account)
+bool IsAccountValid(std::shared_ptr<Account>& account)
 {
     bool flag = true;
     /*
         flag will be updated based on transaction amount being over 500,
         if any transaction < 500, then our account is invalid.
     */
-    for (Transaction *transaction : account->getAccountTransactionSet())
+    for (std::shared_ptr<Transaction>& transaction : account->getAccountTransactionSet())
     {
         flag = transaction->getTransactionAmount() > 500;
 

@@ -3,22 +3,25 @@
 
 #include <iostream>
 #include <list>
+#include<memory>
 #include "Transaction.h"
 #include "Account.h"
 
-using Container = std::list<Account *>;
+//using Container = std::list<Account *>;
+using Container = std::list<std::shared_ptr<Account>>;
 // vector takes collection of Transaction address as element
-using TransactionContainer = std::vector<Transaction *>;
+//using TransactionContainer = std::vector<Transaction *>;
+using Transactions = std::vector<std::shared_ptr<Transaction>>;
 
 // function to create account object
 void CreateAccounts(Container &data);
 
 // function to delete account object
-void DeleteAccounts(Container &data);
+// void DeleteAccounts(Container &data);
 
 // it function takes container of transaction object pointer and
 // returns count of transaction instance(object)
-int CountTransactionOfGivenType(TransactionContainer &data, TransactionType type);
+int CountTransactionOfGivenType(Transactions &data, TransactionType type);
 
 // function to find toatal transaction amount (total for all objects)
 float TotalTransactionAmount(Container &data);

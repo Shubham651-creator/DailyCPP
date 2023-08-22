@@ -1,11 +1,13 @@
 #include <iostream>
+#include<memory>
 #include "Transaction.h"
 #include "Account.h"
 #include "functionalities.h"
 
+using Container = std::list<std::shared_ptr<Account>>;
+
 // vector takes collection of Transaction address as element
-using Transactions = std::vector<Transaction *>;
-using Container = std::list<Account *>;
+using Transactions = std::vector<std::shared_ptr<Transaction>>;
 
 int main()
 {
@@ -16,7 +18,7 @@ int main()
     std::cout << "AccountAboveThreshold is "
               << " \n";
 
-    for (Account *object : store)
+    for (std::shared_ptr<Account>&  object : store)
     {
         std::cout << *object << "\n";
     }
@@ -24,7 +26,7 @@ int main()
     // itreate the in account and store the transactions in
     // transaction container
     Transactions temp;
-    for (Account *object : account)
+    for (std::shared_ptr<Account>& object : account)
     {
         temp = object->getAccountTransactionSet();
     }
@@ -49,11 +51,11 @@ int main()
               << BalanceInterestAmount(account)
               << "\n";
 
-    std::cout << "IsAccountValid():"
-              << IsAccountValid(account.front())
-              << "\n";
+    // std::cout << "IsAccountValid():"
+    //           << IsAccountValid(account.front())
+    //           << "\n";
 
-    DeleteAccounts(account);
+    // DeleteAccounts(account);
 
     return 0;
 }

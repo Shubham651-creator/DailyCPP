@@ -2,13 +2,14 @@
 #define ACCOUNT_H
 
 #include <iostream>
+#include<memory>
 #include "Transaction.h"
 #include <vector>
 
 // every account should have 3 transaction
 
 // vector takes collection of Transaction address as element
-using Transactions = std::vector<Transaction *>;
+using Transactions = std::vector<std::shared_ptr<Transaction>>;
 
 class Account
 {
@@ -28,10 +29,10 @@ public:
     Account(const Account &) = delete;
 
     // disable copy assignment opreator
-    Account operator=(Account &) = delete;
+    Account& operator=(Account &) = delete;
 
     Account(Account &&) = delete;
-    Account operator=(Account &&) = delete;
+    Account& operator=(Account &&) = delete;
 
     // enable destructor
     ~Account() = default;
