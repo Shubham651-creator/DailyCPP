@@ -1,4 +1,5 @@
 #include <iostream>
+#include<functional>
 
 // first-class function !
 
@@ -29,7 +30,7 @@ int factorial(int number)
     return number * factorial(number - 1);
 }
 
-void operation(int *ptr, int N, int (*fn)(int))
+void operation(int *ptr, int N, std::function<int(int)> fn)
 {
     /*
         for 0 to 4, do the follwing :
@@ -54,9 +55,9 @@ int main()
     };
 
     // functional pointer
-    int (*ptr1)(int number) = &square;
-    int (*ptr2)(int number) = &cube;
-    int (*ptr3)(int) = &factorial;
+    std::function<int(int)> ptr1 = &square;
+    std::function<int(int)> ptr2 = &cube;
+    std::function<int(int)> ptr3 = &factorial;  
 
     operation(arr, 5, ptr1); // addr of first location of arr, addr of square()
     operation(arr, 5, ptr2);
