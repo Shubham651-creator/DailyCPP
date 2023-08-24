@@ -111,7 +111,7 @@ so, default constructor must to ENABLE.
        > int n1=10;
        > int& n2 = n1;
 
-        > int& arr[1] = {n2}; //NOT POSSIBLE;
+       > int& arr[ 1] = {n2}; //NOT POSSIBLE;
 
     STL CONTAINER DON'T WORK WIHT RAW REFERENCE (REGULAR) !
 
@@ -129,10 +129,14 @@ so, default constructor must to ENABLE.
     - 
     Solution - [std::function<T>wrapper]
 
+    - functional wrapper can stored any kind of functional address.
+    - #include<functional> lib
+    - std::function<int(int)> fn is replacement of [ int (*fn) (int)]
+
 10. [Lambda_function] (temporary function )
 
 11. Can compiler give develper a gurantee that it will take effort to prevent a copy in the background?
-Solution - [Gurantee_copy-elision](c++17)
+    Solution - [Gurantee_copy-elision](c++17)
 
 12. How do developer handle nothing? NULL DATA? Absence of data?
     - [std::optional-wrapper]
