@@ -25,12 +25,10 @@
 
 # KEYWORDS:
 
-1. 'default' keyword is called also side effect and using to much Default is 
-    bad habit and impossible to redefine that function.
+1. 'default' keyword is called also side effect and using to much Default is bad habit and  impossible to redefine that function.
 
 2. 'auto' :
-    - It works only when you initialized and mostly used in 
-        universal refenence (forwarded refenence) and lambda function.
+    - It works only when you initialized and mostly used in universal refenence (forwarded refenence) and lambda function.
 
 3. 'using' keyword(typedef) is used to alternative name.
     using newName = oldName
@@ -53,11 +51,11 @@
 
 # In modern Cpp programing styles are :
 
-1. Structured oriented (imperative) way
+1. Structured oriented (imperative) way[structured_programming]
     - small project and short
-2. Object oriented way
+2. Object oriented way[Object_oriented_programming]
     - object communication
-3. Functional style way coding
+3. Functional style way coding[functional_programming]
     - If we are working with purely data
     - maths function
 4. iterative apporch to processing the data
