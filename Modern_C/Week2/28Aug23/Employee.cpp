@@ -1,8 +1,12 @@
 #include "Employee.h"
+#include<memory>
 
-float Employee::CalculateTax()
+using Pointer = std::unique_ptr<Employee>;
+
+float CalculateTax(const Pointer &obj)
 {
-    return salary * 0.01f;
+    return obj->getSalary() * 0.01f;
 }
+
 Employee::Employee(int id, float sal)
     : _id(id), salary(sal) {}
