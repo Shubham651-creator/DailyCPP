@@ -6,6 +6,18 @@
 
 using Pointer = std::unique_ptr<Employee>;
 
+/*
+    Const Correctness Rule :
+*/
+
+void MappingFunction(std::vector<Pointer> &data, const std::function<float(const Pointer &)> &fn)
+{
+    for (Pointer &val : data)
+    {
+        fn(val); // map fn ON TO val
+    }
+}
+
 int main()
 {
     std::vector<Pointer> data;
@@ -17,6 +29,14 @@ int main()
     data.push_back(std::make_unique<Employee>(101, 100000.0f));
 
     data.push_back(std::move(e1));
+
+    MappingFunction(data, &CalculateTax);
+
+    MappingFunction(data, [](const Pointer &obj)
+                    { return obj->getSalary() * 0.25f; });
+                    
+    MappingFunction(data, [](const Pointer &obj)
+                    { return obj->getSalary() * 0.5f; });
 
     return 0;
 }
