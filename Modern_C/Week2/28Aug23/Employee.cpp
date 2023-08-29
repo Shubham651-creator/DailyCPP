@@ -10,3 +10,9 @@ float CalculateTax(const Pointer &obj)
 
 Employee::Employee(int id, float sal)
     : _id(id), salary(sal) {}
+    
+std::ostream &operator<<(std::ostream &os, const Employee &rhs) {
+    os << "_id: " << rhs._id
+       << " salary: " << rhs.salary;
+    return os;
+}

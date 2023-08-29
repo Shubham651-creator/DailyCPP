@@ -20,6 +20,8 @@ public:
     ~Employee() = default;
 
     float getSalary() const { return salary; }
+
+    friend std::ostream &operator<<(std::ostream &os, const Employee &rhs);
 };
 
 using Pointer = std::unique_ptr<Employee>;
