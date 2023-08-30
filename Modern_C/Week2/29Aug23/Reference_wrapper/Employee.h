@@ -6,7 +6,7 @@
 #include<functional>
 #include"Project.h"
 
-using RefType = std::reference_wrapper<Project> ;
+using RefType = std::reference_wrapper<std::unique_ptr<Project>> ;
 
 class Employee
 {
