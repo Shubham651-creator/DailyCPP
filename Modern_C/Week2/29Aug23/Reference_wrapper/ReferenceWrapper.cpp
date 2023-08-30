@@ -25,5 +25,9 @@ int main(){
     ProjectContainer project_data;
 
     CreateObject(data, project_data);
+    
+    for(Pointer& value : data){
+        std::cout<<*value<<'\n';
+    }
 
 }
