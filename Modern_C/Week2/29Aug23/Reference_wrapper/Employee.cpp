@@ -1,10 +1,10 @@
 #include "Employee.h"
-#include<memory>
-#include<functional>
-#include"Project.h"
+#include <memory>
+#include <functional>
+#include "Project.h"
 
 using Pointer = std::unique_ptr<Employee>;
-using RefType = std::reference_wrapper<Project> ;
+using RefType = std::reference_wrapper<std::unique_ptr<Project>>;
 
 float CalculateTax(const Pointer &obj)
 {
@@ -14,11 +14,10 @@ float CalculateTax(const Pointer &obj)
 Employee::Employee(int id, float sal, RefType project)
     : _id(id), salary(sal), _active_project(project) {}
 
-std::ostream &operator<<(std::ostream &os, const Employee &rhs) {
+std::ostream &operator<<(std::ostream &os, const Employee &rhs)
+{
     os << "_id: " << rhs._id
        << " salary: " << rhs.salary
-       << " _active_project: " << rhs._active_project;
+       << " _active_project: " << *(rhs._active_project.get()); //get() gives anything inside the reference wrapper 
     return os;
 }
-    
- 
