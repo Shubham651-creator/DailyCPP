@@ -1,12 +1,13 @@
 #include <iostream>
 #include <thread>
+#include <mutex>
 
 /*
     Bash command :
 
     > g++ -pthread RaceConditionProblem.cpp -o app
     > for((i=0;i<100;i++));do ./app; done
-    
+
     After compiler this command, you get different ouput
 
     To solve this Race Condition problem:
@@ -15,6 +16,8 @@
 
 */
 
+std::mutex mt;
+
 int amount = 1000;
 
 void withdraw()
@@ -22,7 +25,11 @@ void withdraw()
     for (int i = 0; i < 100; i++)
     {
         std::this_thread::sleep_for(std::chrono::microseconds(10));
+
+        mt.lock();
+        // critical section
         amount -= 10;
+        mt.unlock();
     }
 }
 
@@ -31,7 +38,11 @@ void deposite()
     for (int i = 0; i < 100; i++)
     {
         std::this_thread::sleep_for(std::chrono::microseconds(10));
+
+        mt.lock();
+        // critical section
         amount += 10;
+        mt.unlock();
     }
 }
 
@@ -48,8 +59,8 @@ int main()
 
 /*
 
-    t2 starts 
-    
+    t2 starts
+
     amount = 1000[RAM] -----> ALU [  1000-10 =990    ]
 
     t1 starts
@@ -60,8 +71,8 @@ int main()
 
                         OR
 
-    t1 starts 
-    
+    t1 starts
+
     amount = 1000[RAM] -----> ALU [   1000+10 =1010   ]
 
     t2 starts
@@ -70,4 +81,3 @@ int main()
             [990]        <----------
 
 */
-
