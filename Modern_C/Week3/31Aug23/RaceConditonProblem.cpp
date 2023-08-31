@@ -20,7 +20,7 @@ std::mutex mt;
 
 int amount = 1000;
 
-void withdraw()
+void withdraw() // t1 thread
 {
     for (int i = 0; i < 100; i++)
     {
@@ -29,11 +29,12 @@ void withdraw()
         mt.lock();
         // critical section
         amount -= 10;
+        std::cout<<"square\n";
         mt.unlock();
     }
 }
 
-void deposite()
+void deposite() // t2 thread
 {
     for (int i = 0; i < 100; i++)
     {
@@ -42,15 +43,20 @@ void deposite()
         mt.lock();
         // critical section
         amount += 10;
+        std::cout<<"cube\n";
         mt.unlock();
     }
 }
 
-int main()
+int main() // main thread container two more independent thread t1 & t2.
 {
+    // we are mapping a function to thread object.
+    // and it is only declaration, NOT a calling a function.
     std::thread t1(&withdraw);
     std::thread t2(&deposite);
 
+    // the main thread now block state, and wait for termination
+    // of t1 and t2 threads.
     t1.join();
     t2.join();
 
@@ -81,3 +87,5 @@ int main()
             [990]        <----------
 
 */
+
+ 
