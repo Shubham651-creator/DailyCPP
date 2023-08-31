@@ -48,6 +48,24 @@ int main()
             100 --> y ------->fixed
             _3---> z -------> user decides
     */
+
+    //===============================================================
+
+    auto partial_formula_swap = std::bind(&formula, _1, _2, _3);
+    partial_formula_f3(90, 30, 80);
+    /*
+        Rules : formula has 3 parameters
+
+        _3---> x -------> user decides
+            :pick the 3rd parameter and map to x
+
+        _2 --> y ------->fixed
+            :pick the 2rd parameter and map to y
+
+        _1 --> z -------> user decides
+            :pick the 1rd parameter and map to z
+
+    */
 }
 
 /*
