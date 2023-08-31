@@ -16,6 +16,14 @@ void formula(int x, int y, int z)
     std::cout << ((x + y) - z) << '\n';
 }
 
+struct Actor
+{
+    void DoSomething(int x, int y, int z)
+    {
+        std::cout << ((x + y) - z) << '\n';
+    }
+};
+
 using namespace std::placeholders;
 
 int main()
@@ -51,7 +59,8 @@ int main()
 
     //===============================================================
 
-    auto partial_formula_swap = std::bind(&formula, _1, _2, _3);
+    auto partial_formula_swap = std::bind(&formula, _3, _2, _1);
+    std::cout << "partial_formula_swap:\t";
     partial_formula_f3(90, 30, 80);
     /*
         Rules : formula has 3 parameters
@@ -66,6 +75,13 @@ int main()
             :pick the 1rd parameter and map to z
 
     */
+
+    //=============================================================
+
+    Actor a1;
+    auto class_func_bind = std::bind(&Actor::DoSomething, &a1, _3, _2, _1);
+    std::cout<<"Bind the class function:\t";
+    class_func_bind(102,304,48);
 }
 
 /*
