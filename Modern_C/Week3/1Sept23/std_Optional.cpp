@@ -1,24 +1,65 @@
 #include <iostream>
 #include <vector>
+#include <optional>
+#include<algorithm>
 
-std::vector<int> Magic(std::vector<int> &data, int threshold)
+using container = std::vector<int>;
+using opt = std::optional<container>;
+
+opt Magic(container &data, int threshold)
 {
-    std::vector<int> result;
+    if (data.empty()) // case 1 : user's fault
+    {
+        throw std::runtime_error("Data is empty.\n");
+    }
 
-    result.push_back(NULL);
+    container result(data.size()); //no size ---> no result.begin() ----> no result.end()
+
+    // STL Algorithm to copy one container with another 
+    // appling coping condition in lambda function.
+    auto itr = std::copy_if(
+        data.begin(), //input starting
+        data.end(), // input end
+        result.begin(), //output start
+        [&](int val){return val > threshold;} //predicate lambda : return bool
+    ); // result{4,5,6,0,0}
+       //            |
+       //           itr
+
+    result.resize(std::distance(result.begin(), itr)); //STL algo 
+
+    if(result.empty()) // case 2: code runs but nothing getting from above
+    {
+        return std::nullopt; // return nothing in std::optional
+    }
 
     return result;
 }
 
 int main()
 {
-    std::vector<int> store;
-    std::vector<int> data = Magic(store, 23);
+    container store{2,3,4,5,6};
+    opt data = Magic(store, 3);
 
     // getting return vector value is optional i.e. empty.
-    if (data.empty())
+    // if (data.empty())
+    // {
+    //     std::cout << "No data found\n";
+    // }
+
+    // If vector value container NULL values
+    if (data.has_value())
     {
-        std::cout << "No data found\n";
+        // consume
+        std::cout << "Data has value\n";
+        for (int val : data.value())
+        {
+            std::cout <<" value = "<< val <<"\n";
+        }
+    }
+    else
+    {
+        std::cout << "okay I understand nothing is above threshold.\n";
     }
 }
 
