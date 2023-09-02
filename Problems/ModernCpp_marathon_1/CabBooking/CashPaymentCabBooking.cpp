@@ -6,18 +6,14 @@ CashPaymentCabBooking::CashPaymentCabBooking(std::string id, std::string pickup,
 
 float CashPaymentCabBooking::CabFareCalculation()
 {
-    container objects;
     float fare = 0.0f;
-    for (std::shared_ptr<CabBooking> object : objects)
+    if (_reward_points_claimed < 0.25 * baseFare())
     {
-        if (_reward_points_claimed < 0.25 * object->baseFare())
-        {
-            return 2 * baseFare();
-        }
-        else
-        {
-            return 1.5 * baseFare();
-        }
+        return 2 * baseFare();
+    }
+    else
+    {
+        return 1.5 * baseFare();
     }
 
     return fare;

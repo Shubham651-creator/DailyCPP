@@ -24,22 +24,19 @@ std::string DisplayPaymentMode(PaymentModeType type)
 OnlinePaymentCabBooking::OnlinePaymentCabBooking(std::string id, std::string pickup, std::string drop, float fare, PaymentModeType mode, int dropCount)
     : CabBooking(id, pickup, drop, fare), _payment_mode(mode), _drop_stops_count(dropCount) {}
 
-float OnlinePaymentCabBooking::CabFareCalculation( )
+float OnlinePaymentCabBooking::CabFareCalculation()
 {
-    container objects;
+
     float fare = 0.0f;
 
-    for (std::shared_ptr<CabBooking> object : objects)
+    if (_payment_mode == PaymentModeType::UPI)
     {
-        if (_payment_mode == PaymentModeType::UPI)
-        {
-            fare = object->baseFare() + _drop_stops_count * 0.1;
-        }
+        fare = baseFare() + _drop_stops_count * 0.1;
+    }
 
-        if (_payment_mode == PaymentModeType::CARD || _payment_mode == PaymentModeType::UPI)
-        {
-            fare = object->baseFare() * _drop_stops_count;
-        }
+    if (_payment_mode == PaymentModeType::CARD || _payment_mode == PaymentModeType::UPI)
+    {
+        fare = baseFare() * _drop_stops_count;
     }
 
     return fare;
