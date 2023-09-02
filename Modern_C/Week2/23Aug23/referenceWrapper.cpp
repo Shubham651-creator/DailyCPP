@@ -13,4 +13,4 @@ int main()
     std::vector<std::reference_wrapper<int>> data{r1};
 
     std::reference_wrapper<std::reference_wrapper<int>> ref_ref{r1};
-}k
+}
