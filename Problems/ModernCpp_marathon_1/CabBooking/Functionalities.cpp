@@ -8,25 +8,25 @@ void CreateObjects(container &objects)
         "101",
         "Pune",
         "Delhi",
-        200.0f,
-        PaymentModeType::CARD,
-        4);
+        230.0f,
+        PaymentModeType::UPI,
+        20);
 
     std::shared_ptr<OnlinePaymentCabBooking> online2 = std::make_shared<OnlinePaymentCabBooking>(
         "102",
         "Bhor",
         "Delhi",
-        600.0f,
+        300.0f,
         PaymentModeType::UPI,
-        4);
+        398);
 
     std::shared_ptr<OnlinePaymentCabBooking> online3 = std::make_shared<OnlinePaymentCabBooking>(
         "103",
         "Pune",
         "Dehradun",
-        1200.0f,
+        120.0f,
         PaymentModeType::ONLINE,
-        4);
+        456);
 
     // three objects of CashPayment
     std::shared_ptr<CashPaymentCabBooking> cash1 = std::make_shared<CashPaymentCabBooking>(
@@ -80,8 +80,8 @@ container ConditionPickupLocation(container &objects, std::string location)
 
 std::string MaxCabFareCalculation(container &objects)
 {
-    float max = 0;
-    std::string id = "102";
+    float max = 0.0f;
+    std::string id = "";
     if (objects.empty())
     {
         throw std::runtime_error("Container is empty\n");
@@ -132,10 +132,13 @@ float AverageOfOnlinePayment(container &objects)
 
     float sum = 0;
     float count = 0;
+    
     for (std::shared_ptr<CabBooking> &value : objects)
     {
-        sum += value->baseFare();
-        count++;
+        if(typeid(*value) == typeid(OnlinePaymentCabBooking)){
+            sum += value->baseFare();
+            count++;
+        }
     }
 
     return sum / count;
