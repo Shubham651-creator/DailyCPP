@@ -42,7 +42,7 @@ public:
     ~CashPaymentCabBooking() = default;
 
     // overriden member function
-    float CabFareCalculation();
+    float CabFareCalculation() override;
 
     int rewardPointsClaimed() const { return _reward_points_claimed; }
     void setRewardPointsClaimed(int reward_points_claimed) { _reward_points_claimed = reward_points_claimed; }

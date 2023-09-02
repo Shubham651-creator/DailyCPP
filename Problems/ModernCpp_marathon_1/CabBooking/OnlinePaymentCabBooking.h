@@ -44,7 +44,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const OnlinePaymentCabBooking &rhs);
 
     // overriden member function
-    float CabFareCalculation( );
+    float CabFareCalculation( ) override;
 
     PaymentModeType paymentMode() const { return _payment_mode; }
     void setPaymentMode(const PaymentModeType &payment_mode) { _payment_mode = payment_mode; }
