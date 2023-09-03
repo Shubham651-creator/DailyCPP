@@ -4,11 +4,13 @@
 #include <iostream>
 #include <list>
 #include <memory>
+#include<functional>
 #include "Sensor.h"
 #include "SensorType.h"
 
+using refPointer = std::reference_wrapper< std::shared_ptr<Sensor> >;
 // store the shared ptr in container of list
-using container = std::list<std::shared_ptr<Sensor>>;
+using container = std::list<refPointer>;
 
 // create the objects
 void CreateObjects(container &object) noexcept;
