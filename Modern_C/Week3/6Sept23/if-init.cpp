@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include<numeric>
+#include <numeric>
 
 int main()
 {
@@ -10,9 +10,9 @@ int main()
 
     // if itr is reached to end of the data,
     // it's We can't find given element
-    auto itr = std::find(data.begin(), data.end(), 4); // search in vector
-    
-    if (data.end() == itr)
+    // search in vector
+    if (auto itr = std::find(data.begin(), data.end(), 4);
+        data.end() == itr)
     {
         std::cout << "NOT found\n";
     }
@@ -21,5 +21,5 @@ int main()
         std::cout << "The element is = " << *itr << '\n';
     }
 
-    std::cout<<std::accumulate(data.begin(),data.end(),0)<<'\n';
+    std::cout << std::accumulate(data.begin(), data.end(), 0) << '\n';
 }
