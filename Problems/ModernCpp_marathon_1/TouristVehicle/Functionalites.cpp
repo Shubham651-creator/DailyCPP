@@ -1,39 +1,51 @@
 #include "Functionalites.h"
 #include "Permit.h"
 
+// reference wrapper around shared ptr of Permit class
+using permitContainer = std::vector<std::shared_ptr<Permit>>;
+
 // list container which stores tourist objects
 using touristVehicleContainer = std::list<std::shared_ptr<TouristVehicle>>;
 
-void CreateObjectsOfTourist(touristVehicleContainer &touristObject) noexcept
+// function Pointer
+using funPointer = std::function<touristVehicleContainer(touristVehicleContainer &, int)>;
+
+touristVehicleContainer Operation(touristVehicleContainer &touristObject, funPointer &fn)
 {
-    std::shared_ptr<TouristVehicle> t1 = std::make_shared<TouristVehicle>(
+    return fn(touristObject, 4);
+}
+
+void CreateObjectsOfTourist(touristVehicleContainer &touristObject, permitContainer &permitObject) noexcept
+{
+    permitObject.push_back(std::make_shared<Permit>("Permit Serial 1", PermitType::LEASE, 200));
+
+    permitObject.push_back(std::make_shared<Permit>("Permit Serial 2", PermitType::LEASE, 370));
+
+    permitObject.push_back(std::make_shared<Permit>("Permit Serial 3", PermitType::OWNED, 9040));
+
+    // store into the tourist vehicle objects
+    touristObject.push_back(std::make_shared<TouristVehicle>(
         "tourist1",
         TouristVehicleType::BIKE,
         2,
         50,
-        std::make_shared<Permit>("Permit Serial 1", PermitType::LEASE, 200));
+        std::ref(permitObject[0])));
 
-    std::shared_ptr<TouristVehicle> t2 = std::make_shared<TouristVehicle>(
+    touristObject.push_back(std::make_shared<TouristVehicle>(
         "tourist2",
         TouristVehicleType::BUS,
         31,
         702,
-        std::make_shared<Permit>("Permit Serial 2", PermitType::LEASE, 370));
-
-    std::shared_ptr<TouristVehicle> t3 = std::make_shared<TouristVehicle>(
+        std::ref(permitObject[1])));
+    touristObject.push_back(std::make_shared<TouristVehicle>(
         "tourist3",
         TouristVehicleType::CAB,
         4,
         350,
-        std::make_shared<Permit>("Permit Serial 3", PermitType::OWNED, 9040));
-
-    // store into the tousit vehicle objects
-    touristObject.push_back(t1);
-    touristObject.push_back(t2);
-    touristObject.push_back(t3);
+        std::ref(permitObject[2])));
 }
 
-touristVehicleContainer ConditionSeatCountAndPermitType(touristVehicleContainer &touristObject)
+touristVehicleContainer ConditionSeatCountAndPermitType(touristVehicleContainer &touristObject, int seats)
 {
     // check whether container empty or not
     if (touristObject.empty())
@@ -45,8 +57,8 @@ touristVehicleContainer ConditionSeatCountAndPermitType(touristVehicleContainer 
 
     for (std::shared_ptr<TouristVehicle> &object : touristObject)
     {
-        if (object->seatCount() >= 4 &&
-            object->permit()->permitType() == PermitType::LEASE)
+        if (object->seatCount() >= seats &&
+            object.get()->permit().get()->permitType() == PermitType::LEASE)
         {
             store.push_back(object);
         }
@@ -94,7 +106,7 @@ std::string BookingChargeIsMaximum(touristVehicleContainer &touristObject)
         if (object->perHourBookingCharge() > max)
         {
             max = object->perHourBookingCharge();
-            serialNumber = object->permit()->serialNumber();
+            serialNumber = object.get()->permit().get()->serialNumber();
         }
     }
 
