@@ -10,7 +10,7 @@ std::ostream &operator<<(std::ostream &os, const TouristVehicle &rhs)
        << " \n_type: " << DisplayTouristVehicleType(rhs._type)
        << " \n_seat_count: " << rhs._seat_count
        << "\n _per_hour_booking_charge: " << rhs._per_hour_booking_charge
-       << "\n _permit: " << *rhs._permit;
+       << "\n _permit: " << *(rhs._permit.get());
 
     return os;
 }
@@ -25,5 +25,5 @@ std::string DisplayTouristVehicleType(TouristVehicleType touristType)
     return "CAB";
 }
 
-TouristVehicle::TouristVehicle(std::string number, TouristVehicleType type, int seat, float charge, std::shared_ptr<Permit> permit)
+TouristVehicle::TouristVehicle(std::string number, TouristVehicleType type, int seat, float charge, PermitPointer permit)
     : _number(number), _type(type), _seat_count(seat), _per_hour_booking_charge(charge), _permit(permit) {}

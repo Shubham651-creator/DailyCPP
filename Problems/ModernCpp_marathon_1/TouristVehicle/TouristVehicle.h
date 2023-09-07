@@ -7,6 +7,9 @@
 #include "TouristVehicleType.h"
 #include "Permit.h"
 
+// reference wrapper around shared ptr of Permit class
+using PermitPointer = std::reference_wrapper<std::shared_ptr<Permit>>;
+
 class TouristVehicle
 {
 private:
@@ -14,7 +17,7 @@ private:
     TouristVehicleType _type;
     int _seat_count;
     float _per_hour_booking_charge;
-    std::shared_ptr<Permit> _permit;
+    PermitPointer _permit;
 
 public:
     // disable default constructor
@@ -33,7 +36,7 @@ public:
     TouristVehicle &operator=(TouristVehicle &&) = delete;
 
     // paramterized constructor
-    TouristVehicle(std::string number, TouristVehicleType type, int seat, float charge, std::shared_ptr<Permit> permit);
+    TouristVehicle(std::string number, TouristVehicleType type, int seat, float charge, PermitPointer permit);
 
     // destructor
     ~TouristVehicle() = default;
@@ -50,8 +53,7 @@ public:
     float perHourBookingCharge() const { return _per_hour_booking_charge; }
     void setPerHourBookingCharge(float per_hour_booking_charge) { _per_hour_booking_charge = per_hour_booking_charge; }
 
-    std::shared_ptr<Permit> permit() const { return _permit; }
-    void setPermit(const std::shared_ptr<Permit> &permit) { _permit = permit; }
+    PermitPointer permit() const { return _permit; }
 
     friend std::ostream &operator<<(std::ostream &os, const TouristVehicle &rhs);
 };
