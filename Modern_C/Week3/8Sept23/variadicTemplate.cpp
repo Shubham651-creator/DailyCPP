@@ -34,7 +34,6 @@ int main()
 {
     std::cout << add<int>(10) << '\n';
     std::cout << add<int, int>(10, 2, 3, 4, 5, 6) << '\n';
-
     // std::cout<< add<std::string>( ) <<'\n'; //won't work
 
     std::cout << "Substraction :\t " << substraction<int>(-10, 20, -30, 40)
