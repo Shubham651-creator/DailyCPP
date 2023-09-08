@@ -26,7 +26,7 @@ void Display(std::vector<T *> data) // vector of pointer template
     {
         std::cout << *value << '\t';
     }
-    std::cout << '\n';
+    std::cout << '\n';k
 }
 
 int main()
