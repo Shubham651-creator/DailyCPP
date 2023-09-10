@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------
 
-# 2. Variant <functional Polymorphism > :
+# 2. Variant [functional_Polymorphism] :
 
     - Runtime polymorphism replace with functional polymorphism.
         > std::variant<obj1, obj2, ....> variant_Name;
@@ -17,9 +17,6 @@
 
     - Forward Reference(for perfect forwarding)
         - all maker functions are e.g. of perfect forwarding
-        
-    - Variabic template
-        > template<Args....>
 
 -----------------------------------------------------------------------
 
@@ -30,9 +27,27 @@
 
 -----------------------------------------------------------------------
 
-4.
-5.
-6.
+# 4. Structured binding 
+
+    - "if-init" concept
+    - constexpr
+
+-----------------------------------------------------------------------
+
+# 5. Meta programming [genric_progamming]
+
+    - Template
+        - Special template
+        - Variadic template
+            > template <typename... T> 
+            - fold experssion
+
+-----------------------------------------------------------------------
+
+# 6.Gurenteed_Copy_Elision
+
+-----------------------------------------------------------------------
+
 7.
 8.
 9.
