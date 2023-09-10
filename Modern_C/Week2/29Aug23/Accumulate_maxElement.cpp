@@ -28,7 +28,7 @@ int main()
         regularData.begin(),
         regularData.end(),
         0.0f,
-        [](float ans, Employee *emp){ return ans + emp->getSalary(); }
+        [](float ans, Employee *emp){ return ans = ans + emp->getSalary(); }
     );
     std::cout << "Total salary is " << totalSalary << '\n';
 

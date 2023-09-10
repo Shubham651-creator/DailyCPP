@@ -7,8 +7,9 @@ int main()
     int n1 = 10;
 
     std::reference_wrapper<int> r1 = n1; // int& r1 = n1;
+    std::reference_wrapper<int> r2 = n1; // int& r2 = n1;
 
-    std::reference_wrapper<int> arr[1]{r1};
+    std::reference_wrapper<int> arr[2]{r1, r2};
 
     std::vector<std::reference_wrapper<int>> data{r1};
 

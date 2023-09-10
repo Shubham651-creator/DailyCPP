@@ -30,11 +30,13 @@ int main()
     Employee e2(std::move(e1));            // set e1 to nullptr and data bind with e2
 
     std::cout << e1 << "\n"; // set e1 nullptr manually
+    std::cout << e2 << "\n"; 
 
     Employee e3(Employee(102, "awale"));
     e1 = std::move(e3); // called move operator constructor and set e3 to nullptr
 
     std::cout << e3 << "\n"; // set e3 nullptr manually
+    std::cout << e1 << "\n"; 
 
     return 0;
 }

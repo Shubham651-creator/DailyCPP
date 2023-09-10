@@ -41,7 +41,7 @@ int main()
         data.end(),
         1.0f,
         [](float ans, float value)
-        { return ans * value; }
+        { return ans = ans * value; }
         /*
 
             This is decided by Accumlator itself.

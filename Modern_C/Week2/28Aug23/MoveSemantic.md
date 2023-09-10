@@ -2,6 +2,7 @@
 
     1. std::emplace_back() 
     - it construct new object directly inside constructor.
+    - it internally called a std::push_back
 
     2. std::push_back()
     - it stores already exist object or variable.

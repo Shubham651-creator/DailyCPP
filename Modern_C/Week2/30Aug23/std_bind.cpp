@@ -31,7 +31,8 @@ int main()
     // partial implmentation of formula where x is set to 100 already
 
     // x= 100,
-    auto partial_formula_f1 = std::bind(&formula, 100, _2, _3);
+    auto partial_formula_f1 =
+        std::bind(&formula, 100, std::placeholders::_2, std::placeholders::_3);
 
     // 3 is discarded, 29 is _2(y) and 45 is _3(z)
     partial_formula_f1(3, 29, 45);
@@ -80,8 +81,8 @@ int main()
 
     Actor a1;
     auto class_func_bind = std::bind(&Actor::DoSomething, &a1, _3, _2, _1);
-    std::cout<<"Bind the class function:\t";
-    class_func_bind(102,304,48);
+    std::cout << "Bind the class function:\t";
+    class_func_bind(102, 304, 48);
 }
 
 /*

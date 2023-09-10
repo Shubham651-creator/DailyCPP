@@ -10,18 +10,21 @@ using Pointer = std::unique_ptr<Employee>;
     Const Correctness Rule :
 */
 
-void MappingFunction(std::vector<Pointer> &data, const std::function<float(const Pointer &)> &fn)
+void MappingFunction(std::vector<Pointer> &data,
+                     const std::function<float(const Pointer &)> &fn)
 {
     for (Pointer &val : data)
     {
-        fn(val); // map fn ON TO val
+        std::cout << fn(val) << '\t'; // map fn ON TO val
     }
+    std::cout << '\n';
 }
 
 int main()
 {
     std::vector<Pointer> data;
     Pointer e1 = std::make_unique<Employee>(102, 200000.0f);
+
     data.push_back(std::make_unique<Employee>(102, 200000.0f));
     data.push_back(std::make_unique<Employee>(103, 300000.0f));
     data.push_back(std::make_unique<Employee>(104, 400000.0f));
@@ -30,8 +33,8 @@ int main()
 
     data.push_back(std::move(e1));
 
-    e1 = nullptr;
-    std::cout<<*e1<<'\n';
+    // e1 = nullptr;
+    // std::cout << *e1 << '\n'; // segmentation fault
 
     MappingFunction(data, &CalculateTax);
 

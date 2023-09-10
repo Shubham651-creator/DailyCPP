@@ -1,5 +1,5 @@
 #include <iostream>
-#include<functional>
+#include <functional>
 
 // first-class function !
 
@@ -56,10 +56,10 @@ int main()
 
     // functional pointer
     std::function<int(int)> ptr1 = &square;
-    std::function<int(int)> ptr2 = &cube;
-    std::function<int(int)> ptr3 = &factorial;  
+    std::function<int(int)> ptr2 = cube;
+    std::function<int(int)> ptr3 = factorial;
 
     operation(arr, 5, ptr1); // addr of first location of arr, addr of square()
-    operation(arr, 5, ptr2);
+    operation(arr, 5, &cube);
     operation(arr, 5, ptr3);
 }

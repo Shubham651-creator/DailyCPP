@@ -9,6 +9,8 @@
 
 3. Reference wrapper:
     - std::ref()
+    - std::cref(), [constant_reference](cref_is_immutable)
+    - std::reference_wrapper<int>()
 
 4. Partial functions:
     - std::bind()
