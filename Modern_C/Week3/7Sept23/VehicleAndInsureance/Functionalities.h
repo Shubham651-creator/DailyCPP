@@ -7,6 +7,8 @@
 #include "Vehicle.h"
 #include "Car.h"
 #include "Insureance.h"
+#include<algorithm>
+#include<numeric>
 
 using carPointer = std::unique_ptr<Car>;
 using carContainer = std::list<carPointer>;
@@ -18,8 +20,27 @@ using rawContainerOfInsurance = std::list<Car *>;
 
 /*
     A function to create insurance objects and car objects.
+
+    Design the function in such a way that we create only one
+    object each time the function is called.
+
+    This function must be executed in seperate thread in each call
+    such that one thread only create and pushes one object
+    into the container.
 */
 void CreateObjects(insuranceContainer &insuranceData, carContainer &carData);
+
+void CreateObject(insuranceContainer &insuranceObject,
+                  carContainer &carObject,
+                  std::string insId,
+                  float insAmount,
+                  InsuranceType insType,
+                  std::variant<int, std::string> id,
+                  int registration,
+                  VehicleType type,
+                  CarType cType,
+                  float cPrice,
+                  std::string cColour);
 
 /*
     A function to return Container of cars above threshold
@@ -66,10 +87,17 @@ std::optional<rawContainerOfInsurance> MeasureTaxFunction(carContainer &carData)
 */
 std::variant<int, std::string> FunctionOfCarColour(carContainer &carData,
                                                    std::string colour);
-                                            
+
 /*
     7. A function that calculate average of all car price instances.
 */
-float CalculateAvergeCarPrice(carContainer& carData);
+float CalculateAvergeCarPrice(carContainer &carData);
+
+template <typename... Args>
+float FindTotalPrice(Args&... carObject) //right to left assoication
+{
+    
+    return (carObject.get()->getCarPrice() + ...);
+}
 
 #endif // FUNCTIONALITIES_H
