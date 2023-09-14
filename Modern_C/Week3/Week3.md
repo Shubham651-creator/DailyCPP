@@ -5,6 +5,15 @@
     - scope based lock :
         - std::lock_guard<std::mutex> lk(mt);
 
+    - Senories of threads
+
+        1. No threading
+            - synchro, single thread
+        2. Synchro threading
+            - continouse running, multiple threads
+        3. Asynchro threading
+            - one thread execute different activity at same.
+
 -----------------------------------------------------------------------
 
 # 2. Variant [functional_Polymorphism] :
@@ -65,4 +74,3 @@
     outputContainer.begin(), 
     return bool lambda function
   ),
-    return auto
