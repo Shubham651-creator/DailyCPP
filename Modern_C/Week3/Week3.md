@@ -39,7 +39,21 @@
 # 4. Structured binding 
 
     - "if-init" concept
+        - (since c++17) We can declare and initialize if-else
+            variable with conditions itself.
+
+        - e.g.
+            if(int i = 12; i < 10){
+                std::cout<<"i is less than 10";
+            }else{
+                std::cout<<"i is MORE than 10";
+            }
+
     - constexpr
+        - To execute function on compile-time.
+        - e.g.
+            constexpr void funct() {}
+            
 
 -----------------------------------------------------------------------
 
@@ -55,11 +69,8 @@
 
 # 6.Gurenteed_Copy_Elision
 
------------------------------------------------------------------------
-
-7.
-8.
-9.
+    - Omits copy and move(since c++17) constructors,
+    resulting in zero-copy pass-by-value semantics.
 
 =======================================================================
 
