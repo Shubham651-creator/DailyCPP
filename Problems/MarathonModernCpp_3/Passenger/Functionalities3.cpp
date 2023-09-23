@@ -105,4 +105,25 @@ void FirstNInstance(PassengerContainer &passengerObjects,
     }
 }
 
+PassengerContainer DoNotMatchName(PassengerContainer &passengerObjects,
+                                  PassengerContainer &store,
+                                  std::future<std::string> &name)
+{
+    // check empty
+    if (passengerObjects.empty())
+    {
+        throw std::runtime_error("Container is empty\n");
+    }
 
+    mt.lock();
+    std::string PName = name.get();
+    for (auto &value : passengerObjects)
+    {
+        if (value.get()->getPassengerName() != PName)
+        {
+            store.push_back(value);
+        }
+    }
+    mt.unlock();
+    return store;
+}

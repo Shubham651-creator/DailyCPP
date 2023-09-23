@@ -17,30 +17,6 @@ using pointerOfPassenger = std::shared_ptr<Passenger>;
 using TicketContainer = std::vector<pointerOfTicket>;
 using PassengerContainer = std::vector<pointerOfPassenger>;
 
-void DoNotMatchName(PassengerContainer &passengerObjects,
-                    PassengerContainer &store,
-                    std::future<std::string> &name)
-{
-    // check empty
-    if (passengerObjects.empty())
-    {
-        throw std::runtime_error("Container is empty\n");
-    }
-
-    std::string PName = name.get();
-    for (auto &value : passengerObjects)
-    {
-        if (value.get()->getPassengerName() != PName)
-        {
-            store.push_back(value);
-        }
-    }
-    for (auto &value : store)
-    {
-        std::cout << *value << '\n';
-    }
-}
-
 int main()
 {
     PassengerContainer passengerObjects;
@@ -97,7 +73,14 @@ int main()
         auto fourFunction = std::thread(&PassengerFareFunction,
                                         std::ref(passengerObjects), std::ref(passengerObjects));
         fourFunction.join();
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
+    try
+    {
         std::cout << "thread of fifth function\n";
         TicketContainer passContainer;
         auto fiveFunction = std::thread(&FirstNInstance,
@@ -107,7 +90,14 @@ int main()
             std::cout << *value << '\n';
         }
         fiveFunction.join();
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
+    try
+    {
         std::cout << "thread of sixth function\n=================================================";
 
         std::string tempName;
@@ -116,12 +106,19 @@ int main()
 
         PassengerContainer sixstore;
 
-        std::async(std::launch::async, &DoNotMatchName,
-                   std::ref(passengerObjects), std::ref(sixstore), std::ref(futureName));
+        std::future<PassengerContainer> ft = std::async(std::launch::async, &DoNotMatchName,
+                                                        std::ref(passengerObjects), std::ref(sixstore), std::ref(futureName));
 
-        std::cout << "Enter name : ";
+        std::cout << "\nEnter name : ";
         std::cin >> tempName;
+
         NamePromise.set_value(tempName);
+
+        std::cout << "The future object values are :\n ";
+        for (auto &value : ft.get())
+        {
+            std::cout << *value << "\n\n";
+        }
     }
     catch (const std::exception &e)
     {

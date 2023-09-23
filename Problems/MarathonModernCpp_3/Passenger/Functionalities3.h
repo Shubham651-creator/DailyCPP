@@ -59,8 +59,7 @@ void FirstNInstance(PassengerContainer &passengerObjects, TicketContainer &ticke
     6. accpets name and containe of passenger.
     it stores all instacne whose don't match wiht name
 */
-void DoNotMatchName(PassengerContainer &passengerObjects,
-                    PassengerContainer &store,
-                    std::future<std::string> &name);
-
+PassengerContainer DoNotMatchName(PassengerContainer &passengerObjects,
+                                  PassengerContainer &store,
+                                  std::future<std::string> &name);
 #endif // FUNCTIONALITIES3_H
