@@ -10,13 +10,13 @@ std::ostream &operator<<(std::ostream &os, const CreditCard &rhs)
     return os;
 }
 
-std::string DisplayCreditType(DebitCardType type)
+std::string DisplayCreditType(CardType type)
 {
-    if (type == DebitCardType::PREMIUM)
+    if (type == CardType::PREMIUM)
     {
         return "PREMIUM";
     }
-    if (type == DebitCardType::REWARDS)
+    if (type == CardType::REWARDS)
     {
         return "REWARDS";
     }
@@ -38,7 +38,7 @@ int DigitLength2(int number)
 }
 
 CreditCard::CreditCard(int number, int cvv,
-                       DebitCardType Type, int pin, float charge)
+                       CardType Type, int pin, float charge)
     : _number(number), _cvv(cvv), _type(Type), _pin(pin), _annual_charge(charge)
 {
     if (DigitLength2(number) < 0 || DigitLength2(number) > 7)

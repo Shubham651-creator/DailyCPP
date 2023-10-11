@@ -50,7 +50,7 @@ int main()
     try
     {
         std::cout << "The average of annual charge is "
-                  << AverageOfCharge(variantObject, DebitCardType::DOMESTIC)
+                  << AverageOfCharge(variantObject, CardType::DOMESTIC)
                   << "\n\n";
     }
     catch (const std::exception &e)
@@ -87,7 +87,7 @@ int main()
     try
     {
         std::cout << "count instance \n"
-                  << CountInstacneType(variantObject, DebitCardType::DOMESTIC)
+                  << CountInstacneType(variantObject, CardType::DOMESTIC)
                   << "\n\n";
     }
     catch (const std::exception &e)

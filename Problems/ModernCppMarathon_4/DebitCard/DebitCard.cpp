@@ -9,9 +9,9 @@ std::ostream &operator<<(std::ostream &os, const DebitCard &rhs)
     return os;
 }
 
-std::string DisplayDebitType(DebitCardType type)
+std::string DisplayDebitType(CardType type)
 {
-    if (type == DebitCardType::INTERNATIONL)
+    if (type == CardType::INTERNATIONL)
     {
         return "INTERNATIONL";
     }
@@ -32,7 +32,7 @@ int DigitLength(int number)
 }
 
 DebitCard::DebitCard(int number, int cvv,
-                     DebitCardType Type, int pin, float charge)
+                     CardType Type, int pin, float charge)
     : _number(number), _cvv(cvv), _type(Type), _pin(pin), _annual_charge(charge)
 {
     if (DigitLength(number) < 0 || DigitLength(number) > 7)

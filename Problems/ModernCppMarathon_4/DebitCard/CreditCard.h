@@ -2,14 +2,14 @@
 #define CREDITCARD_H
 
 #include <iostream>
-#include "DebitCardType.h"
+#include "CardType.h"
 
 class CreditCard
 {
 private:
     int _number;
     int _cvv;
-    DebitCardType _type;
+    CardType _type;
     int _pin;
     float _annual_charge;
 
@@ -30,7 +30,7 @@ public:
     CreditCard &operator=(CreditCard &&) = delete;
 
     // parameterized
-    CreditCard(int number, int cvv, DebitCardType Type, int pin, float charge);
+    CreditCard(int number, int cvv, CardType Type, int pin, float charge);
 
     // destructor
     ~CreditCard() = default;
@@ -40,7 +40,7 @@ public:
 
     int cvv() const { return _cvv; }
 
-    DebitCardType type() const { return _type; }
+    CardType type() const { return _type; }
 
     int pin() const { return _pin; }
 
@@ -49,6 +49,6 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const CreditCard &rhs);
 };
 
-std::string DisplayCreditType(DebitCardType type);
+std::string DisplayCreditType(CardType type);
 
 #endif // CREDITCARD_H
