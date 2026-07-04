@@ -1,0 +1,91 @@
+#include <iostream>
+#include <thread>
+#include <mutex>
+
+/*
+    Bash command :
+
+    > g++ -pthread RaceConditionProblem.cpp -o app
+    > for((i=0;i<100;i++));do ./app; done
+
+    After compiler this command, you get different ouput
+
+    To solve this Race Condition problem:
+    1. lock less
+    2. lock based syn mechnisms
+
+*/
+
+std::mutex mt;
+
+int amount = 1000;
+
+void withdraw() // t1 thread
+{
+    for (int i = 0; i < 100; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::microseconds(10));
+
+        mt.lock();
+        // critical section
+        amount -= 10;
+        std::cout<<"square\n";
+        mt.unlock();
+    }
+}
+
+void deposite() // t2 thread
+{
+    for (int i = 0; i < 100; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::microseconds(10));
+
+        mt.lock();
+        // critical section
+        amount += 10;
+        std::cout<<"cube\n";
+        mt.unlock();
+    }
+}
+
+int main() // main thread container two more independent thread t1 & t2.
+{
+    // we are mapping a function to thread object.
+    // and it is only declaration, NOT a calling a function.
+    std::thread t1(&withdraw);
+    std::thread t2(&deposite);
+
+    // the main thread now block state, and wait for termination
+    // of t1 and t2 threads.
+    t1.join();
+    t2.join();
+
+    std::cout << "final amount : " << amount << "\n";
+}
+
+/*
+
+    t2 starts
+
+    amount = 1000[RAM] -----> ALU [  1000-10 =990    ]
+
+    t1 starts
+
+    amount = 990 [RAM] ------> ALU [  1000+10 = 1010  ]
+            [1010]        <----------
+
+
+                        OR
+
+    t1 starts
+
+    amount = 1000[RAM] -----> ALU [   1000+10 =1010   ]
+
+    t2 starts
+
+    amount = 1010 [RAM] ------> ALU [  1000-10 = 990  ]
+            [990]        <----------
+
+*/
+
+ 

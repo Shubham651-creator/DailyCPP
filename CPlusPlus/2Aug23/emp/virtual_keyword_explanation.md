@@ -1,0 +1,48 @@
+ 
+- The class which have Virtual function called POLYMORPHIC CLASS
+- It involves runtime polymorphism
+
+@vfPtr = Virtual function pointer
+@vfTable = Virtual function vfTable
+@ & = function address
+
+---------------------------------------------------------------------------------------------------------
+# Let's explain the Virtual keyword using "Employee class Example" -
+
+- here we had implement OVERRIDING , but it store the date in different addresss
+
+                                    vfTable[array of addr of Virtual function]
+                                    vfTable = &3000
+____________________________        ___________________________       ___________________________
+Employee(base class)                        SalesPerson                          Manager
+____________________________        ____________________________       ____________________________
+display() &100                          display() &400                   display() &700
+accept() &200                            accept() &500                   accept() &800
+calculateTotalSalary() &300         calculateTotalSalary() &600         calculateTotalSalary() &900
+~Employee() &1000                   ~SalesPerson() &1100                    ~Manager() &1200
+____________________________        _____________________________       _____________________________
+
+
+Employee* eptr = new SalesPerson;
++++ eptr is pointer of base class which pointing towards Drived class SalesPerson
+
+eptr->display();
++++ when we can't access the display() of SalesPerson class, because
+    We can't have access the function Drived class by base class.
++++ So this will excute display() of base class.
+
+
+    Stack memory                        Heap memory
+-------------------------           -----------------------------------------------------
+eptr(Employee*)         |           |       &5000                                       |
+-----------------       |           |   -------------------------------------------     |
+    5000        |=====================>>| object of SalesPerson   | vfPtr = 3000   |    |
+-----------------       |           |   |------------------------------------------     |
+------------------------|           |---------------------------------------------------|
+
+
+
++++ If we want to access the SalesPerson class, add Virtual keyword in front of overriding functions
+    of base class.
++++ Virtual keyword : it creates vfPtr which store the address of vfTable
+    vfTable has array of all address of Virtual functions and implement accordingly.
