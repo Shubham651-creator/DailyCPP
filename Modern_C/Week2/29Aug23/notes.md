@@ -1,4 +1,4 @@
-# What is Iterator?
+## What is Iterator?
     
        0x100H 0x104H 0x108H 0x112H     [consecutive memeory locations]
 array :   1     2       3     4
@@ -16,7 +16,7 @@ List : 1 |0x134H   2 |0x248H  3 | 0x782H   4 | NULL  | END
         list : access next address
 -----------------------------------------------------------------------
 
-# Types_Of_Iterator
+## Types_Of_Iterator
 
     1. input iterator
     2. output iterator
@@ -26,24 +26,24 @@ List : 1 |0x134H   2 |0x248H  3 | 0x782H   4 | NULL  | END
 
 --------------------------------------------------------------------------
 
-# Type of containers:
+## Type of containers:
 
-    1. Sequential container (linear container)
-        - list
-        - vector
-        - array, etc
+1. Sequential container (linear container)
+    - list
+    - vector
+    - array, etc
 
-    2. Associative container(key-value pair)
-        [Hashing]
-        - unordered_map
-        - set
-        - map
-        - multiset, etc
+2. Associative container(key-value pair)
+    [Hashing]
+    - unordered_map
+    - set
+    - map
+    - multiset, etc
 
-    3. Container Adaptors (We can changes its implementation)
-        - stack
-        - queue
-        - priority queue
+3. Container Adaptors (We can changes its implementation)
+    - stack
+    - queue
+    - priority queue
 
 ----------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ Init for addition:(By default by accumalator)
 
 ===========================================================================
 
-# Reference Wrapper:
+## Reference Wrapper:
 
     - Helper functions std::ref and std::cref are often used to generate std::reference_wrapper objects.
 
@@ -92,7 +92,7 @@ Init for addition:(By default by accumalator)
 
 ======================================================================
 
-# std::ref()
+## std::ref()
 
     - std::ref can "Pass" something as a reference.
     - HOW DOES IT DO IT? It constructs a referenece_wrapper for thing written in the wrapper

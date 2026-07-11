@@ -4,7 +4,6 @@
 
 int main()
 {
-
     std::vector<int> data{1, 2, 3, 4, 5};
     std::vector<int> result(data.size());
 

@@ -9,6 +9,10 @@ void display(int arr[3])
     for (int i = 0; i < 3; i++)
     {
         // printf("%d\t",*arr+i); //*(arr+i)
+        
+        //print address of array element
+        printf("%d\t", &arr[i]);
+         
 
         //below code show similar working as above code
         printf("%d\t", *arr);
@@ -25,6 +29,7 @@ void display(int arr[3])
 
     printf("*p++ = %d\n", *p++); //*p and p++
     printf("p = %d\n", p);
+    printf("&p = %d\n", &p);
     printf("*p = %d\n", *p);
 }
 

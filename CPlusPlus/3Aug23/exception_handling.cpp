@@ -52,7 +52,7 @@ public:
     {
         balance = 500;
     }
-    Account(int b)
+    explicit Account(int b)
     {
         balance = b;
     }
@@ -87,6 +87,7 @@ public:
 int main()
 {
     Account a(600);
+    // Account a1 = 300; //implicit conversion is not allowed because of explicit keyword in constructor
 
     // try-catch block
     // never type conversion happens in try-catch block

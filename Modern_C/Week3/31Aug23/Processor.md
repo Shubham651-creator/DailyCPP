@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-# CPU : Central Processing Unit
+## CPU : Central Processing Unit
 
 [Processor] : Hardware to execute instructions.
 
@@ -9,15 +9,13 @@
 
 [Clock_speed](Hz):
 - 2.3GHz i.e. 2.3G instructions per second.
-
 ----------------------------------------------------------------------
 
-# Hyer Threading :
+## Hyer Threading :
 - The ability to run muliple threads on single processor(core).
-
 ----------------------------------------------------------------------
 
-# Critical Section :
+## Critical Section :
 - It is code of block which can access shared memory.
 
     > std::mutex mt;
@@ -25,12 +23,11 @@
     > mt.unlock();
 
 ----------------------------------------------------------------------
+## Type of delay:
 
-# Type of delay:
+1. i/o delay
+- input : 
+- output ; screen,etc.
 
-    1. i/o delay
-    - input : 
-    - output ; screen,etc.
-
-    2. CPU bound task delay
-    - cpu operation : register, ALU 
+2. CPU bound task delay
+- cpu operation : register, ALU 

@@ -1,6 +1,6 @@
 #include <iostream>
 
-// constexpr - give ability to execute code in complier-time.
+// constexpr - give ability to execute function in complier-time.
 constexpr int add(int a, int b)
 {
     return a + b;

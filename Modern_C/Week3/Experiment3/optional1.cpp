@@ -1,5 +1,6 @@
 #include <functional>
 #include <iostream>
+#include <optional>
 
 struct optional1
 {

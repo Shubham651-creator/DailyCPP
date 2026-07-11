@@ -113,11 +113,11 @@ void getData(Product arr[], int n)
 
 int main()
 {
-    int n;
+    int n = 5;
     std::cout << "Enter Number of Product: ";
     std::cin >> n;
 
-    Product p[n];
+    Product p[50]; // create object of Product class
 
     getData(p, n); // take a user input
 

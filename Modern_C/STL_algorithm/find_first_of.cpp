@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <functional>
-#include "/home/kpit/Desktop/coding/DailyCPP/Modern_C/Week4/20Sept23/Employee.h"
+#include "/Modern_C/Week4/20Sept23/Employee.h"
 
 template <typename T>
 void operation(std::vector<T> first, std::vector<T> second)

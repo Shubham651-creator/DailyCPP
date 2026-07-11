@@ -110,11 +110,11 @@ void getData(Employee arr[], int n)
 
 int main()
 {
-     int n ;
+    int n = 5;
     std::cout << "Enter Number of employee: ";
     std::cin >> n;
 
-    Employee e[n]; 
+    Employee e[50]; 
 
     getData(e, n); // take a user input
 

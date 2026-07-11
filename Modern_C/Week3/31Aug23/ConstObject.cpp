@@ -3,7 +3,7 @@
 class Employee
 {
 private:
-    const int data; // once initize can't ba change further
+    const int data; // once initize can't be change further
 
 public:
     Employee(int val)

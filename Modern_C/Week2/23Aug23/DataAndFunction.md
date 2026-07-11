@@ -5,7 +5,7 @@
     > std::function<int(int)> fn = square;
 
 2. variable are passed as arguement to functions !
-    > magic(10)
+    > magic(int val)
     > magic( std::function<int(int)> fn )
 
 3. variable are returned a return value from functions !

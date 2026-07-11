@@ -10,7 +10,7 @@ struct Demo
 class uniform_init
 {
 private:
-    int _eid{-1}; // in class initize
+    int _eid{-1}; // in class initilize
 
 public:
     uniform_init(int id) : _eid(id) {}

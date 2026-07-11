@@ -13,7 +13,7 @@ using Container = std::array<int, 3>;
 Container magic()
 {
     Container v1{11, 22, 55};
-    return v1; // return by move(lvalue) since c++17
+    return v1; // return by 'move(lvalue) i.e prvalue' since c++17
 
     /*
 

@@ -46,7 +46,7 @@ class AllRounder: public Batsman, public Bowler{
     void show(){
         std::cout<<"\n i am in all rounder\n";
         Bowler::show();
-        //Batsman::show(); //create ambiguty, so use protect data members
+        Batsman::show(); //create ambiguty, so use protect data members
         std::cout<<"batsman::"<<bat1<<bat2<<"\n";
     }
 };

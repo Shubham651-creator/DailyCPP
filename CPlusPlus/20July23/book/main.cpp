@@ -121,10 +121,10 @@ void showMenu(Book book[], int n)
 
 int main()
 {
-    int n;
+    int n = 5;
     std::cout << "Enter how much books you want: ";
     std::cin >> n;
-    Book book[n];
+    Book book[50];
 
     // take input
     getData(book, n);

@@ -70,7 +70,9 @@ int main()
     // std::cout << "Address of n1 in main ::" << &n1 << "\n";
     // std::cout << "Value of n1 is :" << n1 << "\n";
 
-    magic(&n1); // pass by reference
+    // Here your returning address of ans which is local variable 
+    //and will be destroyed after function call. So, it will give garbage value.
+    std::cout<< magic(&n1); 
     std::cout << "Address of n1 in main ::" << &n1 << "\n";
     std::cout << "Value of n1 is :" << n1 << "\n";
 

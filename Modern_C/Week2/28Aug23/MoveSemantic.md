@@ -1,10 +1,11 @@
-# Move Sementics
+## Move Sementics
 
-    1. std::emplace_back() 
+1. std::emplace_back() 
+    - Use perfect forwarding
     - it construct new object directly inside constructor.
     - it internally called a std::push_back
 
-    2. std::push_back()
+2. std::push_back()
     - it stores already exist object or variable.
     - std::push_back(lvalue) : copy
     - std::push_back(rvalue) : move

@@ -16,7 +16,7 @@ void Display(std::vector<T> data) // vector of values template
     {
         std::cout << value << '\t';
     }
-    std::cout << '\n';
+    std::cout << std::endl;
 }
 
 template <typename T>
@@ -26,7 +26,7 @@ void Display(std::vector<T *> data) // vector of pointer template
     {
         std::cout << *value << '\t';
     }
-    std::cout << '\n';k
+    std::cout << std::endl;
 }
 
 int main()

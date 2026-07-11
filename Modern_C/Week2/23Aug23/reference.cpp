@@ -2,7 +2,7 @@
 
 int main()
 {
-    int n1 = 10;
+    int n1 = 10, a=20;
     int &n2 = n1;
 
     int &n3 = n2;

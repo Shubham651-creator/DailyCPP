@@ -30,12 +30,12 @@ A common "logic" / "Operation"/ "Process" is to be applied on infinite data type
 
 [Scenario_4]: (Veriadic_Template)(args...)
 
-    - Fold Recursive(c++17)
-        - To avoid writing recursion
+- Fold Recursive(c++17)
+    - To avoid writing recursion
 
 ======================================================================
 
-# Type of coding language
+## Type of coding language
 
 The [C++] is compile-time, strongly type , statically typed, OOP's, functional , structured progamming language.
 

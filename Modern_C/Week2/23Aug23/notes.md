@@ -1,15 +1,15 @@
-# Three paradigms of programmings
+## Three paradigms of programmings
 
-    - Structured programming ! (C programing)
-    - Object oriented programming!
-    - Functional Programming !!!(week 2)
-        - Build your solution by the following principle :
-            -"Always think about data, operations to be performed,
+- Structured programming ! (C programing)
+- Object oriented programming!
+- Functional Programming !!!(week 2)
+    - Build your solution by the following principle :
+        - "Always think about data, operations to be performed,
                 and how to apply operation on data. "
 
-======================================================================
+----
 
-# Working of lambda function:
+## Working of lambda function:
 
 > struct Lambda{
 >    opertaor() (int number){
@@ -20,9 +20,9 @@
 > struct Lambda f1;
 > f1(20);
 
-=======================================================================
+----
 
-# auto V/s template
+## auto V/s template
 
 [auto] : determine the type of a variable based on initial value and you can't further modify.
 > auto n1 = 10 ; //n1 is determined to be of type integer
@@ -32,14 +32,12 @@
 
 - f1 is lambda function (with f1 as an object of an internal class lambda) that takes one integer and returns void.
 
-------------------------------------------------------------------------
-
 [template] : allows you to determine a standred format of code structure that can be used by the compiler to create more code at compiler time
 (overriding).
 
-====================================================================
+----
 
-# Reference :
+## Reference :
 
 - lvalue reference (int& n1)
 - rvalue reference (int&& n2)

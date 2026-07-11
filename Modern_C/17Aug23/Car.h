@@ -24,10 +24,10 @@ public:
     // Car lvalue reference is disabled
     Car &operator=(const Car &) = delete;
 
-    // move function
+    // move constructor is disabled
     Car(Car &&) = delete;
 
-    // move operator function
+    // move operator constructor is disabled
     Car &operator=(Car &&) = delete;
 
     // enable destructor

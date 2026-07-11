@@ -17,6 +17,11 @@ CarNew::CarNew(std::string name, int count, enum CarCategoryNew carCategory, flo
 //parameterized construtor that takes one int
  CarNew::CarNew(int count): carSeatcount(count){}
 
+ CarNew &CarNew::operator=(const CarNew &)
+ {
+     // TODO: insert return statement here
+ }
+
 CarNew::~CarNew()
 {
     std::cout << "Car with name:"

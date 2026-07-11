@@ -4,7 +4,6 @@
 
 int main()
 {
-
     std::vector<int> data{1, 2, 3, 4, 5};
 
     std::vector<int> result(data.size()); // result.size() = data.size()
@@ -15,7 +14,7 @@ int main()
         data.begin(),
         data.end(),
         [](int num)
-        { return num % 10 == 0; });
+        { return num % 2 == 0; });
     std::cout << "std::any_of, Is my condition satisfy: " << store << "\n";
 
     // std::all_of
@@ -24,6 +23,7 @@ int main()
         data.end(),
         [](int num)
         { return num % 10 == 0; });
+    std::cout << "std::all_of, Is my condition satisfy: " << store2 << "\n";
 
     // std::none_of
     bool store3 = std::none_of(
@@ -31,6 +31,6 @@ int main()
         data.end(),
         [](int num)
         { return num % 10 == 0; });
+    std::cout << "std::none_of, Is my condition satisfy: " << store3 << "\n";
 
-   
 }
