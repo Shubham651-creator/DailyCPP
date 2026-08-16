@@ -1,4 +1,4 @@
-//Write a program to arrange five names in alphabetacal order, 
+// Write a program to arrange five names in alphabetacal order, 
 // use function pointer, smart pointer and do not use STLs.
 #include <iostream>
 #include <string>

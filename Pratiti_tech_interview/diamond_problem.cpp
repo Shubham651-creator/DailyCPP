@@ -1,46 +1,46 @@
-#include<iostream>
+#include <iostream>
 
-class top{
-    public:
-    void display(){
-        std::cout<< "You are in top\n";
-    };
-};
-
-class underTop: public top{
+class A
+{
 public:
-    void display(){
-        std::cout<< "You are in undertop\n";
+    int value;
+
+    A(int v = 0) : value(v)
+    {
+        std::cout << "A constructor\n";
     }
 };
 
-class derived1: public underTop{
+class B : virtual public A
+{
 public:
-void display(){
-        std::cout<< "You are in derived1\n";
+    B() : A(10)
+    {
+        std::cout << "B constructor\n";
     }
 };
 
-class derived2: public underTop{
+class C : virtual public A
+{
 public:
-void display(){
-        std::cout<< "You are in derived2\n";
+    C() : A(20)
+    {
+        std::cout << "C constructor\n";
     }
 };
 
-class child: public derived1, public derived2{
+class D : public B, public C
+{
 public:
-void display(){ 
-        std::cout<< "You are in child\n";
-        derived1::display();
-        derived2::display();
+    D() : A(30)
+    {
+        std::cout << "D constructor\n";
     }
 };
-int main(){
 
-    child c1;
-    c1.display();
+int main()
+{
+    D obj;
 
-    return 0;
- 
+    std::cout << obj.value << '\n';
 }
