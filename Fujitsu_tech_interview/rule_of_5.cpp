@@ -66,14 +66,9 @@ class Signal{
                 return *this;
             }
 
-            int* temp = new int[other.n];
-            for(int i=0; i<other.n; i++){
-                temp[i] = other.data[i];
-            }
-
             delete[] data;
 
-            data = temp;
+            data = other.data;
             n = other.n;
 
             other.data = nullptr;
@@ -83,7 +78,7 @@ class Signal{
         }
 
         //Add the data
-        void setData(int arr[]){
+        void setData(const int arr[]){
             for(int i=0; i<this->n; i++){
                 this->data[i] = arr[i];
             }

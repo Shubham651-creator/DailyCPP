@@ -43,11 +43,11 @@ class RequestFactory{
 
 int main(){
 
-    int type;
-    std::cin >> type;
+    int signal;
+    std::cin >> signal;
 
     std::unique_ptr<DiagnosticRequest> d = 
-    RequestFactory::create(type);
+    RequestFactory::create(signal);
  
     d->process();
 }

@@ -19,6 +19,7 @@ private:
 
 public:
 
+    // Consumer
     ThreadPool(size_t numThreads)
     {
         for (size_t i = 0; i < numThreads; ++i)
@@ -52,6 +53,7 @@ public:
         }
     }
 
+    // Producer
     void enqueue(std::function<void()> task)
     {
         {

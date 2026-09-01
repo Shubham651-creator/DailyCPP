@@ -7,16 +7,22 @@ class Singleton{
     private:
         static Singleton* instance;
 
-    public:
         Singleton(){
-            cout<<"Singleton default constructor called"<< endl;
+            cout<<"Singleton default private constructor called"<< endl;
         }
+
+    public:
 
         static Singleton *getInstance(){
             if(instance == nullptr){
                 instance = new Singleton();
             }
             return instance;
+        }
+
+        static void destroy(){
+            delete instance;
+            instance = nullptr;
         }
 
         void display(){
@@ -32,15 +38,19 @@ void worker(){
 
 int main(){
 
-    Singleton* s1 = new Singleton;
+    Singleton* s1 = Singleton::getInstance();
     s1->display();
-
-    worker();
     
     // with threads safe
     thread t1(worker);
     thread t2(worker);
+    thread t3([](){
+        Singleton::getInstance()->display();
+    });
 
     t1.join();
     t2.join();
+    t3.join();
+
+    Singleton::getInstance()->destroy();
 }

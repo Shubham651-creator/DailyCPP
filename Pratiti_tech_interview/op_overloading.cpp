@@ -9,7 +9,7 @@ class complex{
         this->img = img;
     }
 
-    complex operator+(complex& c){
+    complex operator+(const complex& c){
         // complex c1(0,0);
 
         // c1.img = this->img + c.img;

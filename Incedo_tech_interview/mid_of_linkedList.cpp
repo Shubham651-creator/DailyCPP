@@ -1,20 +1,9 @@
 // Find the mid element of linked list
 
 #include<iostream>
+#include "linked_list.h"
 using namespace std;
 
-// Linked list Node
-class Node
-{
-    public:
-    int data;
-    Node* next;
-
-    Node(int value){
-        data= value;
-        next = nullptr;
-    }
-};
 
 // display the all elements of linked list
 void display(Node* head){
